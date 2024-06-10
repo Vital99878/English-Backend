@@ -3,13 +3,31 @@
  */
 export default interface Exercise {
     type: ExerciseType;
+    theme: ExerciseTheme;
     description: string;
     solution: string[];
-    // проверить упражение
+    solutionKeys: string[];
+    /**
+     * Упраженение выполнено?
+     */
     isDone: boolean;
+    checkSolution(solution: string[]): boolean;
 }
+
+export type CreateExerciseDto = Pick<
+    Exercise,
+    'type' | 'theme' | 'description'
+>;
 
 type ExerciseType =
     | 'Вставить пропущенное слово'
     | 'Составить предложение, используя слово'
     | 'Расставить в правильном порядке';
+
+/**
+ * Тема упражнения или топик
+ */
+type ExerciseTheme = {
+    articles?: string;
+    time?: string;
+};
