@@ -5,7 +5,13 @@ export default interface Exercise {
     type: ExerciseType;
     theme: ExerciseTheme;
     description: string;
+    /**
+     * Решение от студента
+     */
     solution: string[];
+    /**
+     * Ключи для проверки решения
+     */
     solutionKeys: string[];
     /**
      * Упраженение выполнено?

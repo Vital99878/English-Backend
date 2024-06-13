@@ -2,25 +2,40 @@ import { expect } from '@jest/globals';
 import Exercise from './Exercise';
 import { CreateExerciseDto } from 'src/interface/exercise';
 
-describe('Exercise Class', () => {
-    beforeEach(() => {});
+describe('Создание корректого инстанса класса Exercise с типом упраженения Вставить пропущенное слово', () => {
+    const descriptionDto =
+        "When is _{key} your birthday? Му birthday is on the_{key} first of Мау. Do you remember _{key} your mother's birthday? Нis book is recognized bу а_{key} lot of people.";
 
-    it('should create an instance of Exercise with correct solution Keys', () => {
-        const exerciseDto: CreateExerciseDto = {
-            type: 'Вставить пропущенное слово',
-            theme: { articles: '' },
-            description:
-                'Hello a__Key World. The__Key Lorem__Key ipsum dolor sit amet, consec__Key tetur adipiscing elit, sed',
-        };
+    const description =
+        "When is  your birthday? Му birthday is on the first of Мау. Do you remember  your mother's birthday? Нis book is recognized bу а lot of people.";
 
-        const solutionKeys = ['a', 'The', 'Lorem', 'consec'];
+    const exerciseDto: CreateExerciseDto = {
+        type: 'Вставить пропущенное слово',
+        theme: { articles: '' },
+        description: descriptionDto,
+    };
 
-        const exercise: Exercise = new Exercise(exerciseDto);
+    const correctSolutionKeys = ['', 'the', '', 'а'];
+    const incorrectSolutionKeys = ['', '', '', 'а'];
 
-        expect(exercise.solutionKeys).toEqual(solutionKeys);
+    const exercise: Exercise = new Exercise(exerciseDto);
+
+    it('должен создать экземпляр класса Exercise с корректными ключами для проверки', () => {
+        expect(exercise.solutionKeys).toEqual(correctSolutionKeys);
     });
 
-    it('should call the doSomething method', () => {});
+    it('должен создать экземпляр класса Exercise корректным текстом выполенного упражнения', () => {
+        expect(exercise.description).toEqual(description);
+    });
 
-    it('should return a value after calling doSomething', () => {});
+    it('для ExerciseType Вставить пропущенное слово', () => {
+        expect(exercise.checkSolution(correctSolutionKeys)).toEqual(true);
+        expect(exercise.checkSolution(incorrectSolutionKeys)).toEqual(false);
+    });
+});
+
+describe('Создание корректого инстанса класса Exercise с типом упраженения Расставить в правильном порядке', () => {
+    it('для ExerciseType Расставить в правильном порядке', () => {
+        // todo
+    });
 });

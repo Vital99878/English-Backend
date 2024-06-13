@@ -9,6 +9,7 @@ export default class Exercise implements ExerciseI {
     isDone: boolean;
 
     constructor(exerciseDto: CreateExerciseDto) {
+        const keyMarker = '_{key}';
         this.type = exerciseDto.type;
         this.theme = exerciseDto.theme;
         this.solution = [];
@@ -17,19 +18,24 @@ export default class Exercise implements ExerciseI {
         this.description = exerciseDto.description
             .split(' ')
             .map((word) => {
-                if (word.endsWith('__KEY')) {
-                    return word.substring(0, word.length - ' __KEY'.length);
+                if (word.endsWith(keyMarker)) {
+                    return word.substring(0, word.length - keyMarker.length);
                 }
                 return word;
             })
-            .join('');
+            .join(' ');
 
         switch (exerciseDto.type) {
             case 'Вставить пропущенное слово':
-                const regex = /\s*.*?__KEY/g;
-                this.solutionKeys = exerciseDto.description.match(
-                    regex
-                ) as string[];
+                const regex = new RegExp(
+                    `(\\b\\s${keyMarker})|(\\s\\S+${keyMarker})`,
+                    'gmi'
+                );
+                this.solutionKeys = exerciseDto.description
+                    .match(regex)
+                    ?.map((word) =>
+                        word.substring(1, word.length - keyMarker.length)
+                    ) as string[];
                 break;
 
             case 'Расставить в правильном порядке':
@@ -52,7 +58,7 @@ export default class Exercise implements ExerciseI {
         this.isDone = true;
         switch (this.type) {
             case 'Вставить пропущенное слово':
-                return this.solutionKeys.join('') === solution.join(' ');
+                return this.solutionKeys.join('') === solution.join('');
 
             case 'Расставить в правильном порядке':
                 return this.description === solution.join(' ');
