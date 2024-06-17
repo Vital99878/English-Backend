@@ -35,7 +35,39 @@ describe('Создание корректого инстанса класса Ex
 });
 
 describe('Создание корректого инстанса класса Exercise с типом упраженения Расставить в правильном порядке', () => {
-    it('для ExerciseType Расставить в правильном порядке', () => {
-        // todo
+    const descriptionDto = 'Му birthday is on the first of Мау';
+
+    const exerciseDto: CreateExerciseDto = {
+        type: 'Расставить в правильном порядке',
+        theme: { articles: '' },
+        description: descriptionDto,
+    };
+
+    it('checkSolution для ExerciseType Расставить в правильном порядке работает корректно', () => {
+        const exercise: Exercise = new Exercise(exerciseDto);
+
+        expect(
+            exercise.checkSolution([
+                'Му',
+                'birthday',
+                'is',
+                'on',
+                'the',
+                'first',
+                'of',
+                'Мау',
+            ])
+        ).toEqual(true);
+        expect(
+            exercise.checkSolution([
+                'Му',
+                'is',
+                'birthday',
+                'on',
+                'first',
+                'the',
+                'Мау',
+            ])
+        ).toEqual(false);
     });
 });

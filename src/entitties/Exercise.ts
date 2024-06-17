@@ -39,7 +39,7 @@ export default class Exercise implements ExerciseI {
                 break;
 
             case 'Расставить в правильном порядке':
-                this.solutionKeys = this.description.split('');
+                this.solutionKeys = this.description.split(' ');
                 break;
 
             case 'Составить предложение, используя слово':
