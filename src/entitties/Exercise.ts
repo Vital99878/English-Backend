@@ -1,5 +1,7 @@
 import ExerciseI, { CreateExerciseDto } from 'src/interface/exercise';
 import { exhaustiveCheck } from 'src/types/utils';
+
+// todo Переписать с наследованием от Абстрактного класса Exercise
 export default class Exercise implements ExerciseI {
     type: ExerciseI['type'];
     theme: ExerciseI['theme'];
@@ -39,7 +41,14 @@ export default class Exercise implements ExerciseI {
                 break;
 
             case 'Расставить в правильном порядке':
-                this.solutionKeys = this.description.split(' ');
+                this.solutionKeys = exerciseDto.description
+                    .match(/(\{.*?\})|(\S+)/gm)
+                    ?.map((key) => {
+                        if (key.startsWith('{') && key.endsWith('}')) {
+                            return key.substring(1, key.length - 1);
+                        }
+                        return key;
+                    }) as string[];
                 break;
 
             case 'Составить предложение, используя слово':

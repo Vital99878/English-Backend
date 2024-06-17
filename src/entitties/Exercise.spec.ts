@@ -35,16 +35,54 @@ describe('Создание корректого инстанса класса Ex
 });
 
 describe('Создание корректого инстанса класса Exercise с типом упраженения Расставить в правильном порядке', () => {
-    const descriptionDto = 'Му birthday is on the first of Мау';
+    const descriptionDto__SPLITER__SPACE = 'Му birthday is on the first of Мау';
+    const descriptionDto__SPLITER__AND__CURVYBRACES =
+        'Му birthday is {on the} first {of Мау}';
 
     const exerciseDto: CreateExerciseDto = {
         type: 'Расставить в правильном порядке',
         theme: { articles: '' },
-        description: descriptionDto,
+        description: descriptionDto__SPLITER__SPACE,
     };
 
-    it('checkSolution для ExerciseType Расставить в правильном порядке работает корректно', () => {
+    const exerciseDto__SPLITER__AND__CURVYBRACES: CreateExerciseDto = {
+        type: 'Расставить в правильном порядке',
+        theme: { articles: '' },
+        description: descriptionDto__SPLITER__AND__CURVYBRACES,
+    };
+
+    it('checkSolution для ExerciseType Расставить в правильном порядке работает корректно, разделитель Пробел', () => {
         const exercise: Exercise = new Exercise(exerciseDto);
+
+        expect(
+            exercise.checkSolution([
+                'Му',
+                'birthday',
+                'is',
+                'on',
+                'the',
+                'first',
+                'of',
+                'Мау',
+            ])
+        ).toEqual(true);
+        expect(
+            exercise.checkSolution([
+                'Му',
+                'is',
+                'birthday',
+                'on',
+                'first',
+                'the',
+                'Мау',
+            ])
+        ).toEqual(false);
+    });
+
+    it('checkSolution для ExerciseType Расставить в правильном порядке работает корректно, разделитель Пробел и {фраза}', () => {
+        const exercise: Exercise = new Exercise(
+            exerciseDto__SPLITER__AND__CURVYBRACES
+        );
 
         expect(
             exercise.checkSolution([
