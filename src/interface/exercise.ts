@@ -6,17 +6,12 @@ export default interface Exercise {
     theme: ExerciseTheme;
     description: string;
     /**
-     * Решение от студента
-     */
-    solution: string[];
-    /**
      * Ключи для проверки решения
      */
     solutionKeys: string[];
     /**
      * Упраженение выполнено?
      */
-    isDone: boolean;
     checkSolution(solution: string[]): boolean;
 }
 
@@ -25,7 +20,7 @@ export type CreateExerciseDto = Pick<
     'type' | 'theme' | 'description'
 >;
 
-type ExerciseType =
+export type ExerciseType =
     | 'Вставить пропущенное слово'
     | 'Составить предложение, используя слово'
     | 'Расставить в правильном порядке';
