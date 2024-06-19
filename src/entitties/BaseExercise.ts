@@ -3,7 +3,7 @@ import Exercise, {
     ExerciseType,
 } from 'src/interface/exercise';
 
-export default abstract class BaseExercise implements Exercise {
+abstract class BaseExercise implements Exercise {
     type: ExerciseType;
     theme: Exercise['theme'] = { articles: '' };
     description: string = '';
@@ -17,3 +17,4 @@ export default abstract class BaseExercise implements Exercise {
         throw new Error('Method not implemented.');
     }
 }
+module.exports = BaseExercise;

@@ -1,5 +1,5 @@
 import ExerciseI, { CreateExerciseDto } from 'src/interface/exercise';
-import BaseExercise from 'src/entitties/BaseExercise';
+const BaseExercise = require('../entitties/BaseExercise');
 
 export default class Exercise_2 extends BaseExercise {
     theme: ExerciseI['theme'];

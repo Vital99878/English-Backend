@@ -1,7 +1,7 @@
 import ExerciseI, { CreateExerciseDto } from 'src/interface/exercise';
-import BaseExercise from 'src/entitties/BaseExercise';
+const BaseExercise = require('../entitties/BaseExercise');
 
-export default class Exercise_1 extends BaseExercise {
+class Exercise_1 extends BaseExercise {
     theme: ExerciseI['theme'];
     description: string;
     solutionKeys: string[];
@@ -31,3 +31,4 @@ export default class Exercise_1 extends BaseExercise {
         return this.solutionKeys.join('') === solution.join('');
     }
 }
+module.exports = Exercise_1;
