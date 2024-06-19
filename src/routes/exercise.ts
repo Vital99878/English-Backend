@@ -1,5 +1,4 @@
 import express, { Request, Response } from 'express';
-// import chalk from 'chalk';
 import { CreateExerciseDto } from 'src/interface/exercise';
 import chalk from 'chalk';
 
@@ -13,7 +12,9 @@ exerciseRouter.get(
     '/:exerciseId',
     async (req: Request<{ exerciseId: string }>, res: Response) => {
         const exercise = exerciseController.get(req.params.exerciseId);
-        // console.log(chalk.green(`got exercise:  ${req.params.exerciseId}`));
+        console.log(
+            chalk.bgBlack.green(`Got exercise:  ${req.params.exerciseId}`)
+        );
         res.send(exercise);
     }
 );
