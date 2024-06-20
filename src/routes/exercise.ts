@@ -1,8 +1,7 @@
 import express, { Request, Response } from 'express';
 import { CreateExerciseDto } from 'src/interface/exercise';
 import chalk from 'chalk';
-
-const exerciseController = require('../controlers/exercise-controller');
+import exerciseController from '../controlers/exercise-controller';
 
 const exerciseRouter = express.Router();
 
@@ -26,9 +25,8 @@ exerciseRouter.post(
         res: Response
     ) => {
         const exercise = exerciseController.create(req.body);
-        console.log('exercise created: ', exercise);
-
-        res.send('OK');
+        console.log(chalk.bgRed.green('exercise created: ', exercise.type));
+        res.send('OKK');
     }
 );
 exerciseRouter.delete(
@@ -37,7 +35,7 @@ exerciseRouter.delete(
         req: Request<{ exerciseId: string }, undefined, CreateExerciseDto>,
         res: Response
     ) => {
-        const exercise = exerciseController.remove(req.body);
+        const exercise = exerciseController.remove(req.params.exerciseId);
         // console.log('exercise deleted:  ', exercise);
         console.log(
             '%c exercise deleted! ',
@@ -47,4 +45,4 @@ exerciseRouter.delete(
     }
 );
 
-module.exports = exerciseRouter;
+export default exerciseRouter;

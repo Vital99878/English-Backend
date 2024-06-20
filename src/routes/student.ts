@@ -12,4 +12,4 @@ studentRouter.get('/:id', (req: Request, res: Response) => {
     res.send(req.params);
 });
 
-module.exports = studentRouter;
+export default studentRouter;

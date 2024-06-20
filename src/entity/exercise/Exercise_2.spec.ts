@@ -1,5 +1,5 @@
 import { expect } from '@jest/globals';
-import Exercise from './Exercise_2';
+import Exercise from 'src/entity/exercise/Exercise_2';
 import { CreateExerciseDto } from 'src/interface/exercise';
 
 const exerciseDto: CreateExerciseDto = {

@@ -3,13 +3,13 @@ import Exercise, {
     ExerciseType,
 } from 'src/interface/exercise';
 
-abstract class BaseExercise implements Exercise {
+export default abstract class BaseExercise implements Exercise {
     type: ExerciseType;
     theme: Exercise['theme'] = { articles: '' };
     description: string = '';
     solutionKeys: string[] = [];
 
-    public constructor(exerciseDto: CreateExerciseDto) {
+    protected constructor(exerciseDto: CreateExerciseDto) {
         this.type = exerciseDto.type;
     }
 
@@ -17,4 +17,3 @@ abstract class BaseExercise implements Exercise {
         throw new Error('Method not implemented.');
     }
 }
-module.exports = BaseExercise;

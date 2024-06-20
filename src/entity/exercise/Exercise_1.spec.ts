@@ -1,7 +1,6 @@
 import { expect } from '@jest/globals';
 import { CreateExerciseDto } from 'src/interface/exercise';
-
-const Exercise = require('../entitties/Exercise_1');
+import Exercise_1 from 'src/entity/exercise/Exercise_1';
 
 const descriptionDto =
     "When is _{key} your birthday? Му birthday is on the_{key} first of Мау. Do you remember _{key} your mother's birthday? Нis book is recognized bу а_{key} lot of people.";
@@ -15,7 +14,7 @@ const exerciseDto: CreateExerciseDto = {
 const correctSolutionKeys = ['', 'the', '', 'а'];
 const incorrectSolutionKeys = ['', '', '', 'а'];
 
-const exercise = new Exercise(exerciseDto);
+const exercise = new Exercise_1(exerciseDto);
 
 describe('Создание корректого инстанса класса Exercise с типом упраженения "Вставить пропущенное слово"', () => {
     it('должен создать экземпляр класса Exercise с корректными ключами для проверки', () => {

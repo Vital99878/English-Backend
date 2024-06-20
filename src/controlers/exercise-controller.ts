@@ -1,5 +1,5 @@
 import Exercise, { CreateExerciseDto } from 'src/interface/exercise';
-const Exercise_1 = require('../entitties/Exercise_1');
+import Exercise_1 from '../entity/exercise/Exercise_1';
 
 const descriptionDto =
     "When is _{key} your birthday? Му birthday is on the_{key} first of Мау. Do you remember _{key} your mother's birthday? Нis book is recognized bу а_{key} lot of people.";
@@ -28,5 +28,5 @@ class ExerciseController {
         return exercise;
     }
 }
-
-module.exports = new ExerciseController();
+const exerciseController = new ExerciseController();
+export default exerciseController;

@@ -6,4 +6,4 @@ teacherRouter.get('/', (req: Request, res: Response) => {
     res.send({ data: 'teacher data' });
 });
 
-module.exports = teacherRouter;
+export default teacherRouter;

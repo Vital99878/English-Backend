@@ -1,13 +1,16 @@
 import express from 'express';
-const studentRoute = require('./routes/student');
-const teacherRoute = require('./routes/teacher');
-const exerciseRoute = require('./routes/exercise');
+import studentRoute from './routes/student';
+import exerciseRoute from './routes/exercise';
+import teacherRoute from './routes/teacher';
 
 import { Response, Request } from 'express';
+import chalk from 'chalk';
 
 const app = express();
 
 const port = 3000;
+
+app.use(express.json());
 
 app.get('/', (req: Request, res: Response) => {
     res.send('Hello World');
@@ -19,6 +22,5 @@ app.use('/teacher', teacherRoute);
 app.use('/exercise', exerciseRoute);
 
 app.listen(port, () => {
-    console.log('Hello World');
-    console.log(`Example app listening on port ${port}`);
+    console.log(chalk.bgBlack.green(`Example app listening on port ${port}`));
 });
