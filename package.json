@@ -4,7 +4,7 @@
   "description": "Апи для создания упражнений для практики английской грамматики",
   "main": "scr/index.js",
   "scripts": {
-    "watch": "tsc -w",
+    "tsc": "tsc -w",
     "dev": "nodemon --inspect dist/app.js",
     "test": "jest --watchAll",
     "serve": "node dist/index.js",

@@ -3,7 +3,8 @@
 const config = {
     preset: 'ts-jest',
     testEnvironment: 'node',
-    moduleDirectories: ['node_modules', '<rootDir>']
+    moduleDirectories: ['node_modules', '<rootDir>'],
+    testPathIgnorePatterns: ['<rootDir>/dist/'],
 };
 
 module.exports = config;
