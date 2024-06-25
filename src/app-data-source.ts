@@ -1,5 +1,4 @@
 import { DataSource } from 'typeorm';
-import BaseExercise from './entity/exercise/BaseExercise';
 import Exercise_1 from './entity/exercise/Exercise_1';
 
 const AppDataSource = new DataSource({
@@ -9,7 +8,7 @@ const AppDataSource = new DataSource({
     username: 'postgres',
     password: 'pass123',
     database: 'English',
-    entities: [BaseExercise, Exercise_1],
+    entities: [Exercise_1],
     logging: false,
     synchronize: true,
 });

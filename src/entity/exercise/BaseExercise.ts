@@ -11,11 +11,11 @@ export default abstract class BaseExercise implements Exercise {
     id: number = 0;
     @Column()
     type: ExerciseType;
-    @Column()
+    @Column('simple-json')
     theme: Exercise['theme'] = { articles: '' };
     @Column()
     description: string = '';
-    @Column()
+    @Column({ type: 'text' })
     solutionKeys: string[] = [];
 
     protected constructor(exerciseDto: CreateExerciseDto) {
