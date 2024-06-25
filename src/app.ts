@@ -27,7 +27,7 @@ AppDataSource.initialize()
         console.log(chalk.bgCyan.green('Data Source has been initialized!'));
         // here you can start to work with your database
     })
-    .catch((error) => console.log(error));
+    .catch((error) => console.log(chalk.bgCyan.red(error)));
 
 app.listen(port, () => {
     console.log(chalk.bgBlack.green(`Example app listening on port ${port}`));

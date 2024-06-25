@@ -4,10 +4,10 @@ import Exercise_1 from './entity/exercise/Exercise_1';
 
 const AppDataSource = new DataSource({
     type: 'postgres',
-    host: 'localhost',
+    host: '127.0.0.1',
     port: 5432,
-    username: 'test',
-    password: 'test',
+    username: 'postgres',
+    password: 'pass123',
     database: 'English',
     entities: [BaseExercise, Exercise_1],
     logging: false,
