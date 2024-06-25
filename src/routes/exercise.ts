@@ -24,7 +24,7 @@ exerciseRouter.post(
         req: Request<undefined, undefined, CreateExerciseDto>,
         res: Response
     ) => {
-        const exercise = exerciseController.create(req.body);
+        const exercise = await exerciseController.create(req.body);
         console.log(chalk.bgRed.green('exercise created: ', exercise.type));
         res.send('OKK');
     }

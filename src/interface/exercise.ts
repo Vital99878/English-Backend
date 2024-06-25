@@ -2,6 +2,7 @@
  * Упражение для правильной вставки пропущенных слов
  */
 export default interface Exercise {
+    id: number;
     type: ExerciseType;
     theme: ExerciseTheme;
     description: string;
