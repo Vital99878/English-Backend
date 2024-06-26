@@ -2,7 +2,7 @@ import ExerciseI, { CreateExerciseDto } from 'src/interface/exercise';
 import BaseExercise from './BaseExercise';
 import { Entity, Column } from 'typeorm';
 
-@Entity()
+// @Entity()
 class Exercise_1 extends BaseExercise {
     @Column()
     theme: ExerciseI['theme'];
