@@ -1,14 +1,22 @@
 import { Repository } from 'typeorm';
 import { CreateExerciseDto } from 'src/interface/exercise';
-import BaseExercise from 'src/entity/exercise/BaseExercise';
+import BaseExercise from '../entity/exercise/BaseExercise';
 import AppDataSource from '../app-data-source';
 
 class ExerciseService {
     constructor(private exerciseRepository: Repository<BaseExercise>) {}
 
+    async getAll() {
+        try {
+            return this.exerciseRepository.find();
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     async get(id: number) {
         try {
-            return this.exerciseRepository.findOne({ where: { id } });
+            return this.exerciseRepository.findOneBy({ id });
         } catch (error) {
             console.error(error);
         }

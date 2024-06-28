@@ -3,6 +3,8 @@ import studentRoute from './routes/student';
 
 import teacherRoute from './routes/teacher';
 
+import exerciseRouter from './routes/exercise';
+
 import { Response, Request } from 'express';
 import chalk from 'chalk';
 import AppDataSource from './app-data-source';
@@ -13,6 +15,10 @@ const app = express();
 const port = 3000;
 
 const userRouter = express.Router();
+
+// todo Запретить пушить в дев и мастер ветки. Только ПР
+// todo Валидатор входящих данных перед запросом в БД
+// todo Обработка ответа, когда пришел пустой ответ из БД
 
 userRouter.post('/', async (req: Request<User>, res: Response) => {
     try {
@@ -58,9 +64,11 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 app.use('/user', userRouter);
+
 app.use('/student', studentRoute);
 
 app.use('/teacher', teacherRoute);
+app.use('/exercise', exerciseRouter);
 
 AppDataSource.initialize()
     .then(() => {
