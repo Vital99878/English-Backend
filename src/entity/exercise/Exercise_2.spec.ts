@@ -6,12 +6,14 @@ const exerciseDto: CreateExerciseDto = {
     type: 'Расставить в правильном порядке',
     theme: { articles: '' },
     description: 'Му birthday is on the first of Мау',
+    solutionKeys: [],
 };
 
 const exerciseDto__SPLITER__AND__CURVYBRACES: CreateExerciseDto = {
     type: 'Расставить в правильном порядке',
     theme: { articles: '' },
     description: 'Му birthday is {on the} first {of Мау}',
+    solutionKeys: [],
 };
 
 const correctSolution: Exercise['solutionKeys'] = [

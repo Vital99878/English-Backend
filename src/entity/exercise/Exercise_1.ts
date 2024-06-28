@@ -12,7 +12,7 @@ class Exercise_1 extends BaseExercise {
     solutionKeys: string[];
 
     constructor(exerciseDto: CreateExerciseDto) {
-        super(exerciseDto);
+        super();
         const keyMarker = '_{key}';
         this.theme = exerciseDto.theme;
 

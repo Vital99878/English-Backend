@@ -6,6 +6,7 @@ const descriptionDto =
     "When is _{key} your birthday? Му birthday is on the_{key} first of Мау. Do you remember _{key} your mother's birthday? Нis book is recognized bу а_{key} lot of people.";
 
 const exerciseDto: CreateExerciseDto = {
+    solutionKeys: [],
     type: 'Вставить пропущенное слово',
     theme: { articles: '' },
     description: descriptionDto,

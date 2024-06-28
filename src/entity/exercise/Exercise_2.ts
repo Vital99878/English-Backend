@@ -7,7 +7,7 @@ export default class Exercise_2 extends BaseExercise {
     solutionKeys: string[];
 
     constructor(exerciseDto: CreateExerciseDto) {
-        super(exerciseDto);
+        super();
 
         this.theme = exerciseDto.theme;
 
