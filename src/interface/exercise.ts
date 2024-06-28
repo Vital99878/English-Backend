@@ -10,16 +10,9 @@ export default interface Exercise {
      * Ключи для проверки решения
      */
     solutionKeys: string[];
-    /**
-     * Упраженение выполнено?
-     */
-    checkSolution(solution: string[]): boolean;
 }
 
-export type CreateExerciseDto = Pick<
-    Exercise,
-    'type' | 'theme' | 'description'
->;
+export type CreateExerciseDto = Omit<Exercise, 'id'>;
 
 export type ExerciseType =
     | 'Вставить пропущенное слово'

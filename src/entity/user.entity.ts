@@ -2,14 +2,13 @@ import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export default class User {
-    constructor(body: any) {}
-
     @PrimaryGeneratedColumn()
-    id!: number;
+    id: number = 0;
 
     @Column()
-    firstName!: string;
+    firstName: string = '';
 
     @Column()
-    lastName!: string;
+    lastName: string = '';
+    // constructor(body: any) {}
 }

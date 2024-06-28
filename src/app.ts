@@ -16,7 +16,10 @@ const userRouter = express.Router();
 
 userRouter.post('/', async (req: Request<User>, res: Response) => {
     try {
-        const user = await AppDataSource.getRepository(User).create(req.body);
+        const user = new User();
+        user.firstName = 'Vital';
+        user.lastName = 'Likhachev';
+        await AppDataSource.getRepository(User).create(user);
         const results = await AppDataSource.getRepository(User).save(user);
         res.send('OK').status(201);
     } catch (error) {
@@ -27,9 +30,8 @@ userRouter.post('/', async (req: Request<User>, res: Response) => {
 });
 userRouter.get('/:id', async (req: Request<{ id: string }>, res: Response) => {
     try {
-        // @ts-ignore
         const user = await AppDataSource.getRepository(User).findBy({
-            id: req.params.id,
+            id: Number(req.params.id),
         });
         res.send(user).status(200);
     } catch (error) {
@@ -59,7 +61,6 @@ app.use('/user', userRouter);
 app.use('/student', studentRoute);
 
 app.use('/teacher', teacherRoute);
-// app.use('/exercise', exerciseRoute);
 
 AppDataSource.initialize()
     .then(() => {

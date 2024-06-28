@@ -10,7 +10,7 @@ const exerciseRouter = express.Router();
 exerciseRouter.get(
     '/:exerciseId',
     async (req: Request<{ exerciseId: string }>, res: Response) => {
-        const exercise = exerciseController.get(req.params.exerciseId);
+        const exercise = exerciseController.get(+req.params.exerciseId);
         console.log(
             chalk.bgBlack.green(`Got exercise:  ${req.params.exerciseId}`)
         );
@@ -25,7 +25,8 @@ exerciseRouter.post(
         res: Response
     ) => {
         const exercise = await exerciseController.create(req.body);
-        console.log(chalk.bgRed.green('exercise created: ', exercise.type));
+        exercise &&
+            console.log(chalk.bgRed.green('exercise created: ', exercise.type));
         res.send('OKK');
     }
 );
@@ -35,7 +36,7 @@ exerciseRouter.delete(
         req: Request<{ exerciseId: string }, undefined, CreateExerciseDto>,
         res: Response
     ) => {
-        const exercise = exerciseController.remove(req.params.exerciseId);
+        const exercise = exerciseController.remove(+req.params.exerciseId);
         // console.log('exercise deleted:  ', exercise);
         console.log(
             '%c exercise deleted! ',
