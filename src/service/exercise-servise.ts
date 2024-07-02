@@ -49,6 +49,26 @@ class ExerciseService {
             console.error(error);
         }
     }
+
+    async verifySolution(
+        id: number,
+        solution: CreateExerciseDto['solutionKeys']
+    ): Promise<boolean | Error> {
+        try {
+            const exercise = await this.exerciseRepository.findOneBy({ id });
+            if (exercise) {
+                // todo  проверка решения и вызов student/{{studentId}}/done-exercises{{exerciseID}}
+                // todo Solution Verification class
+                return exercise.solutionKeys === solution;
+            } else {
+                return new Error('Нету упражнения');
+            }
+        } catch (error) {
+            // todo ts Error
+            console.error(error);
+            return new Error('Нету упражнения');
+        }
+    }
 }
 
 const exerciseService = new ExerciseService(
